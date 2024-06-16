@@ -6,6 +6,7 @@ class Game {
         this.height = this.canvas.height;
         this.baseHeight = 2000
         this.ratio = this.height / this.baseHeight
+        this.background = new Background(this)
         this.player = new Player(this)
 
         //gravity pulls player down 1 pixel per frame
@@ -46,15 +47,17 @@ class Game {
         this.ctx.fillStyle = 'red'
         this.ratio = this.height / this.baseHeight
 
-        
+        this.speed = 6 * this.ratio
         //for scaling depnding on height
         this.gravity = 0.5 * this.ratio
+        this.background.resize()
         this.player.resize()
     }
 
     render(){
         //coords and size for player
-        
+        this.background.update()
+        this.background.draw()
         this.player.update()
         this.player.draw()
         

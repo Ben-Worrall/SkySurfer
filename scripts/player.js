@@ -16,7 +16,7 @@ class Player{
         this.flySpeed
         
     }
-
+       
     draw(){
         this.game.ctx.fillRect(this.x, this.y, this.width, this.height)
     }
@@ -38,7 +38,7 @@ class Player{
         this.width = this.spriteWidth * this.game.ratio
         this.height = this.spriteHeight * this.game.ratio
         this.y = this.game.height * 0.5 - this.height * 0.5
-        this.speedY = -8 * this.game.ratio
+        this.speedY = -2 * this.game.ratio
         this.flySpeed = 20 * this.game.ratio
     }
     isTouchingTop(){
