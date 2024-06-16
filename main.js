@@ -29,7 +29,7 @@ class Game {
                 this.player.fly()
             ]
         })
-        //touch controls
+        //touch control
         this.canvas.addEventListener('touchstart', e => {
             this.player.fly()
         })
