@@ -49,7 +49,7 @@ class Player{
     }
     fly(){
         if(!this.isTouchingTop())[
-            this.speedY = -this.flySpeed
+            this.speedY = -this.flySpeed 
         ]
         
     }

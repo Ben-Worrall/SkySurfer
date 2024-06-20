@@ -10,7 +10,7 @@ class Game {
         this.player = new Player(this)
 
         //gravity pulls player down 1 pixel per frame
-        this.gravity = 1
+        this.gravity = 0.1
         
 
         this.resize(window.innerWidth, window.innerHeight)
