@@ -17,3 +17,6 @@
 .assets {
     display: none;
 }
+.bgWater{
+    z-index: 1010;
+}

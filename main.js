@@ -7,6 +7,7 @@ class Game {
         this.baseHeight = 2000
         this.ratio = this.height / this.baseHeight
         this.background = new Background(this)
+        this.BackgroundWater = new BackgroundWater(this)
         this.player = new Player(this)
         //for sea obstacles
         this.SeaObstacles = []
@@ -39,6 +40,31 @@ class Game {
         })
 
 
+       //cycle through water scenes array
+
+        var BGwaterAR = [
+            "./assets/background/water/BACKGROUND WATER 1.png",
+            "./assets/background/water/BACKGROUND WATER 2.png",
+            "./assets/background/water/BACKGROUND WATER 3.png",
+            "./assets/background/water/BACKGROUND WATER 4.png"
+        ]
+        let count = 0;
+        function loopForever(){
+                
+            document.getElementById('BackgroundWaterDiv').src = BGwaterAR[count]
+            count++;
+            if (count === BGwaterAR.length) {
+                count = 0;
+              }
+
+            
+        }
+        setInterval(loopForever, 250);
+            
+           
+          
+
+
 
     }
 
@@ -54,6 +80,7 @@ class Game {
         //for scaling depnding on height
         this.gravity = 0.5 * this.ratio
         this.background.resize()
+        this.BackgroundWater.resize()
         this.player.resize()
         this.createSeaObstacles()
         this.SeaObstacles.forEach(obstacle => {
@@ -64,7 +91,9 @@ class Game {
     render(){
         //coords and size for player
         this.background.update()
+        this.BackgroundWater.update()
         this.background.draw()
+        this.BackgroundWater.draw()
         this.player.update()
         this.player.draw()
         //
@@ -110,3 +139,5 @@ window.addEventListener('load', function(){
     }
     requestAnimationFrame(animate)
 })
+
+
