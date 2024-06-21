@@ -21,15 +21,15 @@ class Player{
         this.game.ctx.fillRect(this.x, this.y, this.width, this.height)
     }
     update(){
-        this.y += this.speedY
+        this.y += this.speedY 
         //gravity
         if(!this.isTouchingBottom()){
-            this.speedY += this.game.gravity
+            this.speedY += this.game.gravity 
         }
 
         //bottom boundary
         if(this.isTouchingBottom()){
-            this.y = this.game.height - this.height
+            this.y = (this.game.height * 0.875) - this.height 
         }
     }
 
@@ -45,11 +45,11 @@ class Player{
         return this.y <= 0
     }
     isTouchingBottom(){
-        return  this.y >= this.game.height - this.height
+        return  this.y >= (this.game.height * 0.875) - this.height 
     }
     fly(){
         if(!this.isTouchingTop())[
-            this.speedY = -this.flySpeed 
+            this.speedY = -this.flySpeed
         ]
         
     }

@@ -8,6 +8,9 @@ class Game {
         this.ratio = this.height / this.baseHeight
         this.background = new Background(this)
         this.player = new Player(this)
+        //for sea obstacles
+        this.SeaObstacles = []
+        this.numberOfObstacles = 2
 
         //gravity pulls player down 1 pixel per frame
         this.gravity = 0.1
@@ -52,6 +55,10 @@ class Game {
         this.gravity = 0.5 * this.ratio
         this.background.resize()
         this.player.resize()
+        this.createSeaObstacles()
+        this.SeaObstacles.forEach(obstacle => {
+            obstacle.resize()
+        })
     }
 
     render(){
@@ -60,8 +67,26 @@ class Game {
         this.background.draw()
         this.player.update()
         this.player.draw()
-        
+        //
+
+        this.SeaObstacles.forEach(obstacle => {
+            obstacle.update()
+            obstacle.draw()
+        })
     }
+
+    //for sea obstacles
+    createSeaObstacles(){
+        this.SeaObstacles = []
+        //first position for obstacle
+        const firstX = 100
+        const obstacleSpacing = 100
+        for(let i =0; i < this.numberOfObstacles; i++){
+            this.SeaObstacles.push(new SeaObstacle(this, firstX + i * obstacleSpacing))
+        }
+    }
+
+
 
 
 }
