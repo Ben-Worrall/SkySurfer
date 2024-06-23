@@ -11,7 +11,7 @@ class Game {
         this.player = new Player(this)
         //for sea obstacles
         this.SeaObstacles = []
-        this.numberOfObstacles = 2
+        this.numberOfObstacles = 10
 
         //gravity pulls player down 1 pixel per frame
         this.gravity = 0.1
@@ -109,7 +109,7 @@ class Game {
         this.SeaObstacles = []
         //first position for obstacle
         const firstX = 100
-        const obstacleSpacing = 100
+        const obstacleSpacing = 2000 * this.ratio;
         for(let i =0; i < this.numberOfObstacles; i++){
             this.SeaObstacles.push(new SeaObstacle(this, firstX + i * obstacleSpacing))
         }

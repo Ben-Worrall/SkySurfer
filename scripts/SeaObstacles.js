@@ -1,16 +1,16 @@
 class SeaObstacle {
     constructor(game, x){
         this.game = game
-        this.spriteWidth = 1500
-        this.spriteHeight = 1500
-        this.scaledWidth = this.spriteWidth * this.game.ratio
-        this.scaledHeight = this.spriteHeight * this.game.ratio
+        this.spriteWidth = 150
+        this.spriteHeight = 150
+        this.scaledWidth = this.spriteWidth * this.game.ratio *0.01
+        this.scaledHeight = this.spriteHeight * this.game.ratio *0.01
         this.x = x;
-        this.y = this.game.height * 0.5 - this.scaledHeight;
+        this.y = this.game.height * 0.8;
 
     }
     update(){
-        this.x -= this.game.speed
+        this.x -= this.game.speed + 1
 
     }
     draw(){
