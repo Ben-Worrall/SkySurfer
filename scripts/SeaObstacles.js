@@ -10,7 +10,7 @@ class SeaObstacle {
 
     }
     update(){
-        this.x -= this.game.speed + 1
+        this.x -= this.game.speed + 0.5
 
     }
     draw(){

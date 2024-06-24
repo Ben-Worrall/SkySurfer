@@ -14,7 +14,7 @@ class Game {
         this.numberOfObstacles = 10
 
         //gravity pulls player down 1 pixel per frame
-        this.gravity = 0.1
+        this.gravity = 0.5
         
 
         this.resize(window.innerWidth, window.innerHeight)
@@ -40,26 +40,8 @@ class Game {
         })
 
 
-       //cycle through water scenes array
-
-        var BGwaterAR = [
-            "./assets/background/water/BACKGROUND WATER 1.png",
-            "./assets/background/water/BACKGROUND WATER 2.png",
-            "./assets/background/water/BACKGROUND WATER 3.png",
-            "./assets/background/water/BACKGROUND WATER 4.png"
-        ]
-        let count = 0;
-        function loopForever(){
-                
-            document.getElementById('BackgroundWaterDiv').src = BGwaterAR[count]
-            count++;
-            if (count === BGwaterAR.length) {
-                count = 0;
-              }
-
-            
-        }
-        setInterval(loopForever, 250);
+      
+        
             
            
           
@@ -138,6 +120,15 @@ window.addEventListener('load', function(){
         requestAnimationFrame(animate)
     }
     requestAnimationFrame(animate)
+
+    
+
+
+
+
+
+     
+    
 })
 
 
