@@ -27,7 +27,7 @@ class Game {
         })
 
         //mouse controls
-        window.addEventListener('click', (e) => {
+        this.canvas.addEventListener('click', (e) => {
               this.player.fly()
         })
         //keyboard controls
@@ -37,7 +37,7 @@ class Game {
             ]
         })
         //mobile touch
-        window.addEventListener('touchstart', (e) => {
+        this.canvas.addEventListener('touchstart', (e) => {
             this.player.fly()
       })
         
