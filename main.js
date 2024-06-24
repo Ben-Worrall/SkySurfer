@@ -37,7 +37,7 @@ class Game {
             ]
         })
         //mobile touch
-        this.canvas.addEventListener('touchend', (e) => {
+        window.canvas.addEventListener('touchstart', (e) => {
             e.preventDefault()
             this.player.fly()
       })
