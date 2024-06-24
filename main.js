@@ -27,9 +27,9 @@ class Game {
         })
 
         //mouse controls
-        window.addEventListener('click', (e) => {
-              this.player.fly()
-        })
+        //window.addEventListener('click', (e) => {
+             // this.player.fly()
+        //})
         //keyboard controls
         window.addEventListener('keydown', e => {
             if(e.key == ' ' || e.key === 'Enter' || e.key === "w")[
