@@ -35,7 +35,7 @@ class Game {
             ]
         })
         //touch control
-        this.canvas.addEventListener('touchstart', e => {
+        this.canvas.addEventListener('touchend', e => {
             this.player.fly()
         })
 
@@ -124,10 +124,38 @@ window.addEventListener('load', function(){
     
 
 
+    var BGwaterAR = [
+        "./assets/background/water/BACKGROUND WATER 1.png",
+        "./assets/background/water/BACKGROUND WATER 2.png",
+        "./assets/background/water/BACKGROUND WATER 3.png",
+        "./assets/background/water/BACKGROUND WATER 4.png"
+    ]
+    var LoadedBGwaterAR = []
+    for(let i =0; i< BGwaterAR.length; i++){
+        var img=new Image();
+        img.src=BGwaterAR[i];
+        
+    }
 
 
-
-     
+    var count = 0;
+    var fps = 4;
+ 
+function draw() {
+    setTimeout(function() {
+        requestAnimationFrame(draw);
+        document.getElementById('BackgroundWaterDiv').src =  BGwaterAR[count]
+        
+        count++;
+        if (count ===  BGwaterAR.length) {
+            count = 0;
+          }
+        
+ 
+    }, 1000 / fps);
+}
+ 
+draw();
     
 })
 
