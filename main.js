@@ -27,24 +27,15 @@ class Game {
         })
 
         //mouse controls
-        $(document).ready(function(){
-            this.canvas.on('touchstart click', function(e) {    
-                e.preventDefault(); //prevent default behavior
-                if(e.type == "touchstart") {
-                    this.player.fly()
-                } else if(e.type == "click") {
-                    this.player.fly()
-                }
-            });
+        this.canvas.addEventListener('mousedown', (e) => {
+              this.player.fly()
         })
-        
         //keyboard controls
         window.addEventListener('keydown', e => {
             if(e.key == ' ' || e.key === 'Enter' || e.key === "w")[
                 this.player.fly()
             ]
         })
-        //touch control
         
         
 
