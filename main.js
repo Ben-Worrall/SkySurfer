@@ -27,7 +27,7 @@ class Game {
         })
 
         //mouse controls
-        this.canvas.addEventListener('mousedown', (e) => {
+        window.addEventListener('mousedown', (e) => {
               this.player.fly()
         })
         //keyboard controls
