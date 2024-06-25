@@ -14,6 +14,7 @@ class Game {
         this.numberOfObstacles = 2000
         this.score
         this.gameOver
+        
 
         //gravity pulls player down 1 pixel per frame
         this.gravity = 0.5
@@ -27,7 +28,7 @@ class Game {
         })
 
         //mouse controls
-        window.addEventListener('click', (e) => {
+        window.addEventListener('mousedown', (e) => {
               this.player.fly()
         })
         //keyboard controls
@@ -43,7 +44,7 @@ class Game {
         })
         
 
-
+        
       
         
             
@@ -53,6 +54,7 @@ class Game {
 
 
     }
+    
 
     resize(width, height){
         this.canvas.width = width;
@@ -60,7 +62,8 @@ class Game {
         this.width = this.canvas.width;
         this.height = this.canvas.height;
         this.ctx.fillStyle = 'red'
-        this.ctx.font = '10px Bungee'
+        this.ctx.font = 'Bungee'
+        
         
         this.ratio = this.height / this.baseHeight
 
@@ -85,9 +88,10 @@ class Game {
         this.BackgroundWater.update()
         this.background.draw()
         this.BackgroundWater.draw()
-        this.drawStatusText()
-        this.player.update()
-        this.player.draw()
+        
+        //this.drawStatusText()
+        //this.player.update()
+        //this.player.draw()
         //
 
         this.SeaObstacles.forEach(obstacle => {
@@ -114,7 +118,12 @@ class Game {
         this.ctx.restore()
     }
 
-
+    PlayButtonFunc(){
+        this.drawStatusText()
+        this.player.update()
+        this.player.draw()
+        
+    }
 
 }
 
@@ -137,10 +146,25 @@ window.addEventListener('load', function(){
     function animate(){
         ctx.clearRect(0,0, canvas.height, canvas.width)
         game.render()
+        
         if(!game.gameOver) requestAnimationFrame(animate)
     }
     requestAnimationFrame(animate)
 
+
+    document.getElementById('PlayerButton').addEventListener('click', function(){
+        document.getElementById('PlayerButton').style.display="none"
+        
+        function animate(){
+            
+            game.PlayButtonFunc()
+            
+            if(!game.gameOver) requestAnimationFrame(animate)
+        }
+        requestAnimationFrame(animate)
+    
+    
+    })
     
 
 
