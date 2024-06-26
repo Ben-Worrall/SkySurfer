@@ -13,7 +13,7 @@ class Game {
         this.SeaObstacles = []
         this.numberOfObstacles = 2000
         this.score
-        this.gameOver
+        this.gameOver 
         
 
         //gravity pulls player down 1 pixel per frame
@@ -63,7 +63,9 @@ class Game {
         this.height = this.canvas.height;
         this.ctx.fillStyle = 'red'
         this.ctx.font = 'Bungee'
-        
+        //for collision
+        this.ctx.lineWidth = 3;
+        this.ctx.strokeStyle = 'white'
         
         this.ratio = this.height / this.baseHeight
 
@@ -110,11 +112,22 @@ class Game {
             this.SeaObstacles.push(new SeaObstacle(this, firstX + i * obstacleSpacing))
         }
     }
+    //check collisions
+    checkCollision(a, b){
+        const dx = a.collisionX - b.collisionX;
+        const dy = a.collisionY - b.collisionY;
+        const distance = Math.hypot(dx, dy);
+        const sumOfRadii = a.collisionRadius + b.collisionRadius;
+        return distance <= sumOfRadii
+    }
 
 
     drawStatusText(){
         this.ctx.save()
         this.ctx.fillText('score: ' + this.score, ((this.width  * 0.5)), 30)
+        if(this.gameOver){
+            document.getElementById('PlayButtonHolderAfter').style.display = ""
+        }
         this.ctx.restore()
     }
 
@@ -147,7 +160,7 @@ window.addEventListener('load', function(){
         ctx.clearRect(0,0, canvas.height, canvas.width)
         game.render()
         
-        if(!game.gameOver) requestAnimationFrame(animate)
+         requestAnimationFrame(animate)
     }
     requestAnimationFrame(animate)
 
@@ -162,6 +175,22 @@ window.addEventListener('load', function(){
             if(!game.gameOver) requestAnimationFrame(animate)
         }
         requestAnimationFrame(animate)
+    
+    
+    })
+    document.getElementById('PlayerButtonAfter').addEventListener('click', function(){
+        document.getElementById('PlayButtonHolderAfter').style.display="none"
+        
+        function animate2(){
+            game.gameOver = false
+            game.PlayButtonFunc()
+            
+
+            
+            
+            if(!game.gameOver) requestAnimationFrame(animate2)
+        }
+        requestAnimationFrame(animate2)
     
     
     })
