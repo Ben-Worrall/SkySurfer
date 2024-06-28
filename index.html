@@ -14,13 +14,19 @@
 
 <body id="Body">
 <canvas id="GameCanvas"></canvas>
+
+<div id="ScoreHolder">
+    <div id="Score"></div>
+    <div id="HighScore"></div>
+</div>
+
 <figure id="PlayButtonHolder">
     <button name="play" id="PlayerButton"></button>
 </figure>
 
 
 <figure id="PlayButtonHolderAfter" style="display: none;">
-    <p style="color: black; font-size: 5vw;">Game Over</p>
+    <p id="GameOverText">Game Over</p>
     <button name="playAfter" id="PlayerButtonAfter"></button>
 </figure>
 

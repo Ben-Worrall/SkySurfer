@@ -1,12 +1,12 @@
 class SeaObstacle {
     constructor(game, x){
         this.game = game
-        this.spriteWidth = 250
-        this.spriteHeight = 250
+        this.spriteWidth = 450
+        this.spriteHeight = 350
         this.scaledWidth = this.spriteWidth * this.game.ratio 
         this.scaledHeight = this.spriteHeight * this.game.ratio
         this.x = x;
-        this.y = this.game.height * 0.76;
+        this.y = this.game.height * 0.72;
 
         //for collisions
         this.collisionX
@@ -59,6 +59,13 @@ class SeaObstacle {
     }
     isOffScreen(){
          return this.x < -this.game.player.width
+    }
+    checkCollision(){
+        //check collisino
+        if (this.game.checkCollision(this,this.game.player)){
+            this.game.gameOver = true
+            this.game.player.collided = true
+        }
     }
 
     

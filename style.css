@@ -47,15 +47,19 @@
 
 #PlayButtonHolderAfter {
     background: rgba(210, 76%, 57%, 0.5);
-    height: 200px;
+    height: 75%;
     display: -ms-flex;
     display: -webkit-flex;
-    display: flex;
+    width: 50%;
     position: absolute;
+    display: flex;
+    justify-content: center;
+    text-align: center;
     
   }
   
   #PlayButtonHolderAfter button[name="playAfter"] {
+    position: relative;
     width: 10vw;
     height: 10vw;
     background: green;
@@ -80,7 +84,14 @@
     border-width: 3vw 0vw 3vw 7vw;
     border-color: transparent transparent transparent rgb(91, 206, 25);
   }
-
+  #GameOverText{
+    text-align: center;
+    height: 10%;
+    position: absolute;
+    font-size: 5vw;
+    margin-top: 0;
+    font-weight: bold;
+  }
 
 
 
@@ -125,4 +136,39 @@
     border-style: solid;
     border-width: 3vw 0vw 3vw 7vw;
     border-color: transparent transparent transparent rgb(91, 206, 25);
+  }
+
+
+
+
+
+
+  /*  Score  */
+
+
+  #ScoreHolder{
+    position: absolute;
+    margin-left: 2%;
+    left: 0;
+    top: 0;
+    font-size: 1vw;
+    font-size: -webkit-xxx-large;
+    font-weight: 900; 
+    text-shadow: 2px 0px 0px #ff0000;
+    letter-spacing:5px;
+    
+
+    
+  }
+  #Score{
+
+    font-size: 2vw;
+    
+    
+
+  }
+  #HighScore{
+    font-size: 2vw;
+    
+    
   }

@@ -29,7 +29,9 @@ class Game {
 
         //mouse controls
         window.addEventListener('mousedown', (e) => {
+            e.preventDefault()
               this.player.fly()
+              console.log('click on mouse')
         })
         //keyboard controls
         window.addEventListener('keydown', e => {
@@ -41,6 +43,7 @@ class Game {
         window.addEventListener('touchstart', (e) => {
             e.preventDefault()
             this.player.fly()
+            console.log('click on screen')
         })
         
 
@@ -123,20 +126,39 @@ class Game {
 
 
     drawStatusText(){
-        this.ctx.save()
-        this.ctx.fillText('score: ' + this.score, ((this.width  * 0.5)), 30)
+        
+        document.getElementById('Score').innerText = "Score:" + this.score
         if(this.gameOver){
             document.getElementById('PlayButtonHolderAfter').style.display = ""
+            if(localStorage.getItem('HighScore')){
+                if(this.score > localStorage.getItem('HighScore')){
+                    localStorage.setItem('HighScore', this.score)
+                }
+            } else {
+                localStorage.setItem('HighScore', this.score)
+            }
+
+
+            //update highscore if needed
+            if(this.score > Number(document.getElementById('HighScore').innerText.slice(-1))){
+                document.getElementById('HighScore').innerText = "High Score: " + this.score
+            }
+
+            
+           
         }
-        this.ctx.restore()
+        
     }
 
     PlayButtonFunc(){
         this.drawStatusText()
         this.player.update()
         this.player.draw()
+
+        
         
     }
+    
 
 }
 
@@ -152,6 +174,15 @@ window.addEventListener('load', function(){
     ctx.fillStyle = 'red'
 
     const game = new Game(canvas, ctx)
+
+
+    //high school initial
+    if(this.localStorage.getItem('HighScore')){
+        this.document.getElementById('HighScore').innerText = "High Score: " + this.localStorage.getItem('HighScore')
+    }else{
+        this.document.getElementById('HighScore').innerText = "High Score: 0" 
+    }
+    
     
 
 
@@ -167,7 +198,7 @@ window.addEventListener('load', function(){
 
     document.getElementById('PlayerButton').addEventListener('click', function(){
         document.getElementById('PlayerButton').style.display="none"
-        
+        game.score = 0
         function animate(){
             
             game.PlayButtonFunc()
@@ -181,12 +212,18 @@ window.addEventListener('load', function(){
     document.getElementById('PlayerButtonAfter').addEventListener('click', function(){
         document.getElementById('PlayButtonHolderAfter').style.display="none"
         
+        
+        game.gameOver = false
+        game.score = 0
         function animate2(){
-            game.gameOver = false
+            
+            
+            game.SeaObstacles.forEach(obstacle => {
+                obstacle.checkCollision()
+                
+            })
+            
             game.PlayButtonFunc()
-            
-
-            
             
             if(!game.gameOver) requestAnimationFrame(animate2)
         }
