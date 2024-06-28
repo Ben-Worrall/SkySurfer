@@ -2,7 +2,7 @@ class Player{
     constructor(game){
         this.game = game;
         this.x = 50;
-        this.y
+        this.y = window.innerHeight * 0.5
         this.width
         this.height
         //increase speed of gravity
@@ -24,7 +24,7 @@ class Player{
     }
        
     draw(){
-        this.game.ctx.fillRect(this.x, this.y, this.width, this.height)
+        this.game.ctx.fillRect(50, this.y, this.width, this.height)
 
         //for collision
         this.game.ctx.beginPath();

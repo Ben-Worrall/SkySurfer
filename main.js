@@ -28,11 +28,25 @@ class Game {
         })
 
         //mouse controls
-        window.addEventListener('mousedown', (e) => {
-            e.preventDefault()
-              this.player.fly()
-              console.log('click on mouse')
-        })
+        
+            window.addEventListener("mousedown", (e) => {
+                
+                switch (e.button) {
+                  case 0:
+                    console.log( "Left button clicked.")
+                    this.player.fly()
+                    break;
+                  case 1:
+                    console.log( "Middle button clicked.");
+                    this.player.fly()
+                    break;
+                  case 2:
+                    console.log( "Right button clicked.");
+                    this.player.fly()
+                    break;
+                  
+                }
+              });
         //keyboard controls
         window.addEventListener('keydown', e => {
             if(e.key == ' ' || e.key === 'Enter' || e.key === "w")[
@@ -109,7 +123,7 @@ class Game {
     createSeaObstacles(){
         this.SeaObstacles = []
         //first position for obstacle
-        const firstX = 100
+        const firstX = this.width
         const obstacleSpacing = 3500 * this.ratio;
         for(let i =0; i < this.numberOfObstacles; i++){
             this.SeaObstacles.push(new SeaObstacle(this, firstX + i * obstacleSpacing))
@@ -199,6 +213,7 @@ window.addEventListener('load', function(){
     document.getElementById('PlayerButton').addEventListener('click', function(){
         document.getElementById('PlayerButton').style.display="none"
         game.score = 0
+        game.numberOfObstacles = 2000
         function animate(){
             
             game.PlayButtonFunc()
@@ -212,9 +227,14 @@ window.addEventListener('load', function(){
     document.getElementById('PlayerButtonAfter').addEventListener('click', function(){
         document.getElementById('PlayButtonHolderAfter').style.display="none"
         
-        
+        game.SeaObstacles = []
         game.gameOver = false
         game.score = 0
+        game.numberOfObstacles = 2000
+        setTimeout(function(){
+            game.createSeaObstacles()
+        }, 1000)
+        
         function animate2(){
             
             
