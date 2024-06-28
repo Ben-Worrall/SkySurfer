@@ -58,7 +58,7 @@ class SeaObstacle {
         this.scaledHeight = this.spriteHeight * this.game.ratio
     }
     isOffScreen(){
-         return this.x < -this.game.player.width
+         return this.x < -this.game.width
     }
     checkCollision(){
         //check collisino
