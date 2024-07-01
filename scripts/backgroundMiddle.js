@@ -2,7 +2,7 @@ class BackgroundMiddle {
     constructor(game){
         this.game = game;
         this.image = document.getElementById('backgroundMiddle')
-        this.width = 14000
+        this.width = 4000
         this.height = this.game.baseHeight
         this.scaledWidth;
         this.scaledHeight;

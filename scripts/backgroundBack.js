@@ -2,7 +2,7 @@ class BackgroundBack {
     constructor(game){
         this.game = game;
         this.image = document.getElementById('backgroundBack')
-        this.width = 14000
+        this.width = 4000
         this.height = this.game.baseHeight
         this.scaledWidth;
         this.scaledHeight;
