@@ -2,7 +2,7 @@ class BackgroundWater {
     constructor(game){
         this.game = game;
         this.image = document.getElementById('BackgroundWaterDiv')
-        this.width = 4000
+        this.width = 6000
         this.height = 2000
         this.scaledWidth;
         this.scaledHeight;
@@ -17,7 +17,7 @@ class BackgroundWater {
   
     }
     update(){
-        this.x -= this.game.speed
+        this.x -= this.game.speeds
         if(this.x <= -this.scaledWidth){
             this.x = 0
         }

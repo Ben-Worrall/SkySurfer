@@ -32,7 +32,7 @@ class SeaObstacle {
             this.game.SeaObstacles = this.game.SeaObstacles.filter(SeaOb => !SeaOb.markedForDeletion);
             console.log(this.game.SeaObstacles.length)
 
-            this.game.score++
+            this.game.score = this.game.score + 1
         }
 
 
@@ -58,7 +58,7 @@ class SeaObstacle {
         this.scaledHeight = this.spriteHeight * this.game.ratio
     }
     isOffScreen(){
-         return this.x < -this.game.width
+         return this.x < -this.scaledWidth
     }
     checkCollision(){
         //check collisino

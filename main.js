@@ -4,9 +4,13 @@ class Game {
         this.ctx = context;
         this.width = this.canvas.width;
         this.height = this.canvas.height;
+
+
         this.baseHeight = 2000
         this.ratio = this.height / this.baseHeight
-        this.background = new Background(this)
+        this.backgroundBack = new BackgroundBack(this)
+        this.backgroundMiddle = new BackgroundMiddle(this)
+        this.backgroundFront = new BackgroundFront(this)
         this.BackgroundWater = new BackgroundWater(this)
         this.player = new Player(this)
         //for sea obstacles
@@ -18,6 +22,10 @@ class Game {
 
         //gravity pulls player down 1 pixel per frame
         this.gravity = 0.5
+
+
+        
+
         
 
         this.resize(window.innerWidth, window.innerHeight)
@@ -61,9 +69,14 @@ class Game {
         })
         
 
-        
       
-        
+        //preload images
+        const SeaWaterSprite2 = new Image()
+         SeaWaterSprite2.src = "./assets/background/BACKGROUND BACK LAYER.png"
+         const SeaWaterSprite3 = new Image()
+         SeaWaterSprite3.src = "./assets/background/BACKGROUND MIDDLE LAYER.png"
+         const SeaWaterSprite4 = new Image()
+         SeaWaterSprite4.src = "./assets/background/BACKGROUND FRONT LAYER.png"
             
            
           
@@ -89,7 +102,9 @@ class Game {
         this.speed = 5 * this.ratio
         //for scaling depnding on height
         this.gravity = 0.5 * this.ratio
-        this.background.resize()
+        this.backgroundBack.resize()
+        this.backgroundMiddle.resize()
+        this.backgroundFront.resize()
         this.BackgroundWater.resize()
         this.player.resize()
         this.createSeaObstacles()
@@ -103,9 +118,13 @@ class Game {
     render(){
         
         //coords and size for player
-        this.background.update()
+        this.backgroundBack.update()
+        this.backgroundMiddle.update()
+        this.backgroundFront.update()
         this.BackgroundWater.update()
-        this.background.draw()
+        this.backgroundBack.draw()
+        this.backgroundMiddle.draw()
+        this.backgroundFront.draw()
         this.BackgroundWater.draw()
         
         //this.drawStatusText()
@@ -169,6 +188,9 @@ class Game {
         this.player.update()
         this.player.draw()
 
+
+        
+
         
         
     }
@@ -216,6 +238,7 @@ window.addEventListener('load', function(){
         game.numberOfObstacles = 2000
         function animate(){
             
+            
             game.PlayButtonFunc()
             
             if(!game.gameOver) requestAnimationFrame(animate)
@@ -252,34 +275,34 @@ window.addEventListener('load', function(){
     
     })
     
-
-
-    var BGwaterAR = [
-        "./assets/background/water/BACKGROUND WATER 1.png",
-        "./assets/background/water/BACKGROUND WATER 2.png",
-        "./assets/background/water/BACKGROUND WATER 3.png",
-        "./assets/background/water/BACKGROUND WATER 4.png"
-    ]
     
-    for(let i =0; i< BGwaterAR.length; i++){
-        var img=new Image();
-        img.src=BGwaterAR[i];
-        
-    }
+    
 
 
-    var count = 0;
+    
+   //animate background water
+   //animate sea
+   const SeaFrameWidth = 6000
+   const SeaFrameHeight = 2000
+   const xPos = 130
+   const yPos = 160
+   const scale = 1
+   let count = 0
     var fps = 4;
+
+    const SeaWaterSprite = new Image()
+    SeaWaterSprite.src = "./assets/background/water/WaterFull.png"
+
+    
+   
+
  
 function draw() {
+      
+    
     setTimeout(function() {
-        if(!game.gameOver) requestAnimationFrame(draw);
-        document.getElementById('BackgroundWaterDiv').src =  BGwaterAR[count]
+         requestAnimationFrame(draw);
         
-        count++;
-        if (count ===  BGwaterAR.length) {
-            count = 0;
-          }
         
  
     }, 1000 / fps);

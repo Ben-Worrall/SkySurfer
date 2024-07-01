@@ -150,7 +150,7 @@
     position: absolute;
     padding: 1%;
     width: 20%;
-    left: 0;
+    right: 0;
     top: 0;
     font-size: 2vw;
     font-size: -webkit-xxx-large;
@@ -158,7 +158,7 @@
     text-shadow: 2px 0px 0px #7c7c7c;
     letter-spacing:5px;
     background-color: rgb(238, 238, 238);
-    border-radius: 0px 30px 30px 0px;
+    border-radius: 30px 0px 0px 30px;
 
     
   }
