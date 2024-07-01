@@ -18,7 +18,7 @@
     width: 100%;
     position: absolute;
     height: 100%;
-    display: none;
+    
 }
 
 
@@ -96,7 +96,7 @@
     display: -webkit-flex;
     display: flex;
     position: absolute;
-    z-index: 1111;
+    z-index: 1113;
   }
   
   figure button[name="play"] {
@@ -107,13 +107,13 @@
     border-radius: 100%;
     margin: auto;
     cursor: pointer;
-    z-index: 1111;
+    z-index: 1113;
   }
   figure button[name="play"]:focus {
     outline: 0;
     border: 1px solid hsl(110, 58%, 69%);
     box-shadow: 0 0 0 3px hsla(210, 76%, 57%, 0.5);
-    z-index: 1111;
+    z-index: 1113;
   }
   
   figure button[name="play"]::after {
@@ -172,8 +172,8 @@
 
   #backgroundSpace{
     position: absolute;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
   }
 
 #World{
@@ -183,8 +183,8 @@
   width: 150vh;
   height: 150vh;
   margin: 15%;
-  bottom: -110%;
-
+  bottom: -120%;
+  z-index: 1112;
   
  
 }
