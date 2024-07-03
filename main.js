@@ -29,7 +29,7 @@ window.addEventListener('load', function(){
         let i = 0
         function animate(){
          document.getElementById('World').style.transform ='rotate(' + i + 'deg)';
-         console.log('test')
+         //console.log('test')
          i = i + 0.25
             requestAnimationFrame(animate)
        }
@@ -39,9 +39,40 @@ window.addEventListener('load', function(){
     })
     
     
-    
+    this.document.getElementById('Character').style.bottom = "34%"
     
 
 
     
+})
+
+
+var Boost
+//for up button (mouse down)
+document.getElementById('UpButton').addEventListener('mousedown', function(e){
+    //console.log(e.target)
+    
+    e.target.style.height = "13vw"
+    e.target.style.width = "13vw"
+
+    //move up
+    let i = 0
+    Boost=setInterval(function(){
+        
+        document.getElementById('Character').style.bottom = document.getElementById('Character').style.bottom + i + "px"
+        i++
+   }, 1);
+        
+        
+        
+           
+      
+      
+})
+//for up button (mouse up)
+document.getElementById('UpButton').addEventListener('mouseup', function(e){
+    //console.log(e.target)
+    if (Boost) clearInterval(Boost)
+    e.target.style.height = "14vw"
+    e.target.style.width = "14vw"
 })
