@@ -5,6 +5,7 @@ class Game{
         this.ctx = context;
         this.width = this.canvas.width;
         this.height = this.canvas.height;
+        this.world = new World(this)
         this.player = new Player(this)
         this.gravity
         this.baseHeight = 1080
@@ -36,6 +37,11 @@ class Game{
         this.player.update()
         this.player.draw()
         
+        
+    }
+    renderWorld(){
+        this.world.update()
+        this.world.draw()
     }
 
    
@@ -47,6 +53,15 @@ class Game{
 
 
 window.addEventListener('load', function(){
+    var img = new Image
+    img.src = "./assets/background/World2.png"
+    function AnimateWorld(){
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        game.renderWorld()
+        requestAnimationFrame(AnimateWorld)
+    }
+    requestAnimationFrame(AnimateWorld)
+    
     //load up canvas
     const canvas = document.getElementById('GameCanvas')
     const ctx = canvas.getContext('2d')
@@ -97,7 +112,7 @@ window.addEventListener('load', function(){
 
        //update all game objects
     function Animate(){
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        
         game.render()
         requestAnimationFrame(Animate)
     }
