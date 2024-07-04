@@ -1,5 +1,45 @@
 
+class Game{
+    constructor(canvas, context){
+        this.canvas = canvas;
+        this.ctx = context;
+        this.width = this.canvas.width;
+        this.height = this.canvas.height;
+        this.player = new Player(this)
+        this.gravity
+        this.baseHeight = 1080
+        this.ratio = this.height / this.baseHeight
+        this.resize(window.innerWidth, window.innerHeight)
+       
 
+         //check for resizing
+        window.addEventListener('resize', e =>{
+            
+            this.resize(e.currentTarget.innerWidth, e.currentTarget.innerHeight)
+        })
+    }
+    resize(width, height){
+
+        this.canvas.width = width;
+        this.canvas.height = height;
+        this.height = this.canvas.height;
+        this.width = this.canvas.width;
+        this.ratio = this.height / this.baseHeight
+
+        this.gravity = 0.15 * this.ratio
+        this.player.resize()
+        this.ctx.fillStyle = 'red'
+        console.log(this.ratio)
+
+    }
+    render(){
+        this.player.update()
+        this.player.draw()
+        
+    }
+
+   
+}
 
 
 
@@ -7,6 +47,23 @@
 
 
 window.addEventListener('load', function(){
+    //load up canvas
+    const canvas = document.getElementById('GameCanvas')
+    const ctx = canvas.getContext('2d')
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
+    const game = new Game(canvas, ctx)
+   
+    ctx.fillStyle = 'red'
+
+    
+
+
+
+
+
+
+
     
 
 
@@ -27,6 +84,7 @@ window.addEventListener('load', function(){
     document.getElementById('PlayerButton').addEventListener('click', function(){
         document.getElementById('PlayerButton').style.display="none"
         let i = 0
+        //for world
         function animate(){
          document.getElementById('World').style.transform ='rotate(' + -i + 'deg)';
          //console.log('test')
@@ -34,6 +92,16 @@ window.addEventListener('load', function(){
             requestAnimationFrame(animate)
        }
        requestAnimationFrame(animate)
+
+
+
+       //update all game objects
+    function Animate(){
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        game.render()
+        requestAnimationFrame(Animate)
+    }
+    requestAnimationFrame(Animate)
        
     
     })
@@ -59,10 +127,7 @@ window.addEventListener('load', function(){
 
 
 
-//for up button (mouse down)
-let BoostAnim
-let GravityAnim
-var Gravity = 3
+
 
 document.getElementById('UpButton').addEventListener('mousedown', function(e){
     //console.log(e.target)
@@ -70,65 +135,18 @@ document.getElementById('UpButton').addEventListener('mousedown', function(e){
     e.target.style.height = "13vw"
     e.target.style.width = "13vw"
 
-    var WorldColCoords = document.getElementById('WorldCollision').getBoundingClientRect()
-    var CharacterCoords = document.getElementById('Character').getBoundingClientRect()
-    let i = 1
     
-
-        function animate2(){
-            document.getElementById('Character').style.top = (CharacterCoords.top )+ -i + "px"
-            i= i+3.5
-           
-            BoostAnim = window.requestAnimationFrame(animate2)
-            window.cancelAnimationFrame(GravityAnim)
-        }
-        animate2()
         
-    })
-
-
-
-
-
-
-
-
+})
 
           //for up button (mouse up)
-          document.getElementById('UpButton').addEventListener('mouseup', function(e){
+        document.getElementById('UpButton').addEventListener('mouseup', function(e){
             
 
 
             console.log('button release')
-            //console.log(e.target)
-            //stop flying animation
-            window.cancelAnimationFrame(BoostAnim)
-           
-
             
-           
-            function animate(){
-                
-              
-        
-              
-
-
-                if(document.getElementById('Character').getBoundingClientRect().top < document.getElementById('WorldCollision').getBoundingClientRect().top - document.getElementById('Character').getBoundingClientRect().height){
-                    document.getElementById('Character').style.top = document.getElementById('Character').getBoundingClientRect().top + Gravity + "px"
-                    console.log('higher than the collision')
-                    console.log( document.getElementById('Character').getBoundingClientRect().top)
-                    
-                    GravityAnim = window.requestAnimationFrame(animate)
-                    
-                }else{
-                    console.log('on the collision')
-                }
-              }
-              
-             animate()
-            
-
+          
             //change button back
             e.target.style.height = "14vw"
             e.target.style.width = "14vw"

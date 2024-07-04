@@ -9,12 +9,19 @@
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background-image: url("./assets/background/BackgroundSpace.png");
+    
+    
+    
+}
+#GameCanvas{
+  z-index: 1112;
+  position:absolute;
+  background-image: url("./assets/background/BackgroundSpace.png");
     background-repeat: no-repeat;
     background-size: 100vw 100vh;
-    z-index: 1112;
+    top: 0;
+    left: 0;
 }
-
 
 
 
@@ -201,6 +208,7 @@
   z-index: 1113;
   left: 13%;
   bottom: -72.5%;
+  outline: 1px solid blue;
 }
 
 
