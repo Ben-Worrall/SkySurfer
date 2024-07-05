@@ -15,7 +15,7 @@ class World{
     }
     update(){
         //spin image
-        
+        //asdas
     }
     resize(){
         this.width = this.spriteWidth * this.game.ratio
