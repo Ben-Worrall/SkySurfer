@@ -10,7 +10,7 @@ class World{
     }
     draw(){
         var img = new Image
-        img.src = "../assets/background/World2.png"
+        img.src = "./assets/background/World2.png"
         this.game.ctx.drawImage(img, 60 * this.game.ratio , 555 * this.game.ratio, this.spriteWidth * this.game.ratio, this.spriteHeight * this.game.ratio)
     }
     update(){
