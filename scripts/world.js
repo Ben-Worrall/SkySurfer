@@ -54,7 +54,7 @@ class World{
         
     }
     update(){
-        this.angle = this.angle + 0.5
+        this.angle = this.angle + (0.1 * this.game.ratio)
     }
     resize(){
         this.width = this.spriteWidth * this.game.ratio

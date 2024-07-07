@@ -18,6 +18,18 @@ class Game{
             
             this.resize(e.currentTarget.innerWidth, e.currentTarget.innerHeight)
         })
+
+
+        //player control
+
+        
+        
+
+       
+
+
+
+
     }
     resize(width, height){
 
@@ -72,7 +84,26 @@ window.addEventListener('load', function(){
    
     ctx.fillStyle = 'red'
 
+    document.getElementById('UpButton').addEventListener('mousedown', e =>{
+        //console.log(e.target)
+        //console.log('button push')
+        e.target.style.height = "13vw"
+        e.target.style.width = "13vw"
+        game.player.fly()
+        
+            
+    })
     
+      //for up button (mouse up)
+    document.getElementById('UpButton').addEventListener('mouseup', e =>{
+    
+        //console.log('button release')
+        
+      
+        //change button back
+        e.target.style.height = "14vw"
+        e.target.style.width = "14vw"
+    })
 
 
 
@@ -145,28 +176,6 @@ window.addEventListener('load', function(){
 
 
 
-document.getElementById('UpButton').addEventListener('mousedown', function(e){
-    //console.log(e.target)
-    console.log('button push')
-    e.target.style.height = "13vw"
-    e.target.style.width = "13vw"
-
-    
-        
-})
-
-          //for up button (mouse up)
-        document.getElementById('UpButton').addEventListener('mouseup', function(e){
-            
-
-
-            console.log('button release')
-            
-          
-            //change button back
-            e.target.style.height = "14vw"
-            e.target.style.width = "14vw"
-        })
 
 
 

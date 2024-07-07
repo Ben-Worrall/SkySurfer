@@ -34,4 +34,14 @@ class Player{
     isTouchingGround(){
       return this.y >= document.getElementById('WorldCollision').getBoundingClientRect().top - this.height
     }
+    isTouchingRoof(){
+        return this.y <= 0;
+    }
+    fly(){
+        console.log('fly')
+        if(!this.isTouchingRoof()){
+            this.speedY = -5 * this.game.ratio
+        }
+        
+    }
 }
