@@ -1,21 +1,60 @@
 class World{
     constructor(game){
-        this.game =  game;
+        this.game = game;
         this.x = 0;
         this.y
         this.spriteWidth = 1500
         this.spriteHeight = 1500
         this.width 
         this.height
+        this.angle = 0
+        this.img = new Image()
+        this.img.src = "./assets/background/World2.png"
+        
+        
+        
+        
     }
+    
+        
+    
     draw(){
-        var img = new Image
-        img.src = "./assets/background/World2.png"
-        this.game.ctx.drawImage(img, 60 * this.game.ratio , 555 * this.game.ratio, this.spriteWidth * this.game.ratio, this.spriteHeight * this.game.ratio)
+        
+        
+        //this.game.ctx.drawImage(img, 60 * this.game.ratio , 555 * this.game.ratio, this.spriteWidth, this.spriteWidth * this.game.ratio, this.spriteHeight * this.game.ratio)
+        // save the current co-ordinate system 
+        // before we screw with it
+        var x = 60 * this.game.ratio
+        var y = 555 * this.game.ratio
+        var width = this.spriteWidth * this.game.ratio
+        var height = this.spriteHeight * this.game.ratio
+        this.game.ctx.save()
+    
+        //Convert degrees to radian 
+        var rad = this.angle * Math.PI / 180;
+    
+        //Set the origin to the center of the image
+        this.game.ctx.translate(x + width / 2, y + height / 2);
+    
+        //Rotate the canvas around the origin
+        this.game.ctx.rotate(rad);
+    
+        //draw the image    
+        this.game.ctx.drawImage(this.img,width / 2 * (-1),height / 2 * (-1),width,height);
+    
+        // Restore canvas state as saved from above
+        this.game.ctx.restore();
+        
+        
+        
+            
+           
+        
+
+        
     }
     update(){
-        //spin image
-        //asdas
+        this.angle = this.angle + 0.5
     }
     resize(){
         this.width = this.spriteWidth * this.game.ratio
@@ -26,3 +65,5 @@ class World{
     }
     
 }
+
+

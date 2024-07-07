@@ -43,6 +43,7 @@ class Game{
         this.world.update()
         this.world.draw()
     }
+    
 
    
 }
