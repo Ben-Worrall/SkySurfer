@@ -19,7 +19,7 @@ class World{
         
     
     draw(){
-        
+       
         
         //this.game.ctx.drawImage(img, 60 * this.game.ratio , 555 * this.game.ratio, this.spriteWidth, this.spriteWidth * this.game.ratio, this.spriteHeight * this.game.ratio)
         // save the current co-ordinate system 
@@ -57,11 +57,12 @@ class World{
         this.angle = this.angle + (0.1 * this.game.ratio)
     }
     resize(){
-        this.width = this.spriteWidth * this.game.ratio
-        this.height = this.spriteHeight * this.game.ratio
-        this.y = this.game.height * 0.5 - this.height * 0.5
-        this.x = document.getElementById('WorldCollision').getBoundingClientRect().left*2 + this.width/2
+        
+        
+        
         this.speedY = -2 * this.game.ratio
+        document.getElementById('WorldCollision').style.left =  "0px"//((60 * this.game.ratio) + (this.spriteWidth * this.game.ratio))/4 + "px"
+        document.getElementById('WorldCollision').style.width = (this.spriteWidth * this.game.ratio) + "px"
     }
     
 }

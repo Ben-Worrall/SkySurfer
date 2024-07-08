@@ -41,8 +41,9 @@ class Game{
 
         this.gravity = 0.15 * this.ratio
         this.player.resize()
+        this.world.resize()
         this.ctx.fillStyle = 'red'
-        console.log(this.ratio)
+        //console.log(this.ratio)
 
     }
     render(){
@@ -66,6 +67,10 @@ class Game{
 
 
 window.addEventListener('load', function(){
+    
+    //console.log(document.getElementById('WorldCollision').getBoundingClientRect().left)
+
+
     var img = new Image
     img.src = "./assets/background/World2.png"
     function AnimateWorld(){
@@ -87,6 +92,7 @@ window.addEventListener('load', function(){
 
 
     //for mouse contrls
+    let reqAnim
 
 
     document.getElementById('UpButton').addEventListener('mousedown', e =>{
@@ -94,7 +100,12 @@ window.addEventListener('load', function(){
         //console.log('button push')
         e.target.style.height = "13vw"
         e.target.style.width = "13vw"
-        game.player.fly()
+        function Animate(){
+            reqAnim = this.window.requestAnimationFrame(Animate)
+            game.player.fly()
+        }
+        Animate()
+        
         
             
     })
@@ -103,8 +114,8 @@ window.addEventListener('load', function(){
     document.getElementById('UpButton').addEventListener('mouseup', e =>{
     
         //console.log('button release')
-        
-      
+        this.window.cancelAnimationFrame(reqAnim)
+        game.player.Down()
         //change button back
         e.target.style.height = "14vw"
         e.target.style.width = "14vw"
@@ -130,7 +141,7 @@ window.addEventListener('load', function(){
     
         //console.log('button release')
         
-      
+        game.player.Down()
         //change button back
         e.target.style.height = "14vw"
         e.target.style.width = "14vw"
@@ -161,18 +172,10 @@ window.addEventListener('load', function(){
 
     document.getElementById('PlayerButton').addEventListener('click', function(){
         document.getElementById('PlayerButton').style.display="none"
-        let i = 0
-        //for world
-        function animate(){
-         document.getElementById('World').style.transform ='rotate(' + -i + 'deg)';
-         //console.log('test')
-         i = i + 0.25
-            requestAnimationFrame(animate)
-       }
-       requestAnimationFrame(animate)
+        
 
 
-
+        
        //update all game objects
     function Animate(){
         
@@ -185,20 +188,9 @@ window.addEventListener('load', function(){
     })
     
 
+    
 
-    //position the start of 
-
-
-
-    var WorldColCoords = document.getElementById('WorldCollision').getBoundingClientRect()
-    var CharacterCoords = document.getElementById('Character').getBoundingClientRect()
-    //position on y coord
-     document.getElementById('Character').style.top = (WorldColCoords.top)-(CharacterCoords.height ) + "px"
-    //position x coord
-    document.getElementById('Character').style.left = WorldColCoords.left+(WorldColCoords.width/2)-(CharacterCoords.width/2) + "px"
-
-
-
+   
 
     
 })
