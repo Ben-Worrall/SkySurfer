@@ -114,7 +114,7 @@ window.addEventListener('load', function(){
     //for mobile controls
 
 
-
+   /*
     document.getElementById('UpButton').addEventListener('touchstart', e =>{
         //console.log(e.target)
         //console.log('button push')
@@ -137,7 +137,7 @@ window.addEventListener('load', function(){
     })
 
 
-
+   */
 
 
 
