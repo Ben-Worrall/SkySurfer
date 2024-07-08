@@ -84,6 +84,11 @@ window.addEventListener('load', function(){
    
     ctx.fillStyle = 'red'
 
+
+
+    //for mouse contrls
+
+
     document.getElementById('UpButton').addEventListener('mousedown', e =>{
         //console.log(e.target)
         //console.log('button push')
@@ -96,6 +101,32 @@ window.addEventListener('load', function(){
     
       //for up button (mouse up)
     document.getElementById('UpButton').addEventListener('mouseup', e =>{
+    
+        //console.log('button release')
+        
+      
+        //change button back
+        e.target.style.height = "14vw"
+        e.target.style.width = "14vw"
+    })
+
+
+    //for mobile controls
+
+
+
+    document.getElementById('UpButton').addEventListener('touchstart', e =>{
+        //console.log(e.target)
+        //console.log('button push')
+        e.target.style.height = "13vw"
+        e.target.style.width = "13vw"
+        game.player.fly()
+        
+            
+    })
+    
+     
+    document.getElementById('UpButton').addEventListener('touchend', e =>{
     
         //console.log('button release')
         
