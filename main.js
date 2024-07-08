@@ -11,7 +11,7 @@ class Game{
         this.baseHeight = 1080
         this.ratio = this.height / this.baseHeight
         this.resize(window.innerWidth, window.innerHeight)
-       
+        this.fly = false
 
          //check for resizing
         window.addEventListener('resize', e =>{
@@ -114,13 +114,13 @@ window.addEventListener('load', function(){
     //for mobile controls
 
 
-   /*
+   
     document.getElementById('UpButton').addEventListener('touchstart', e =>{
         //console.log(e.target)
         //console.log('button push')
         e.target.style.height = "13vw"
         e.target.style.width = "13vw"
-        game.player.fly()
+       
         
             
     })
@@ -137,7 +137,7 @@ window.addEventListener('load', function(){
     })
 
 
-   */
+   
 
 
 
