@@ -37,7 +37,7 @@ class Player{
         this.width = this.spriteWidth * this.game.ratio
         this.height = this.spriteHeight * this.game.ratio
         this.y = this.game.height * 0.5 - this.height * 0.5
-        this.x = document.getElementById('WorldCollision').getBoundingClientRect().width/2 + this.width*2
+        this.x = document.getElementById('WorldCollision').getBoundingClientRect().width/2 + this.width*1.85
         this.speedY = -2 * this.game.ratio
     }
     isTouchingGround(){
