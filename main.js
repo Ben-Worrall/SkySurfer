@@ -127,6 +127,7 @@ window.addEventListener('load', function(){
 
    
     document.getElementById('UpButton').addEventListener('touchstart', e =>{
+        e.preventDefault()
         //console.log(e.target)
         //console.log('button push')
         e.target.style.height = "13vw"
@@ -138,7 +139,7 @@ window.addEventListener('load', function(){
     
      
     document.getElementById('UpButton').addEventListener('touchend', e =>{
-    
+        e.preventDefault()
         //console.log('button release')
         
         game.player.Down()

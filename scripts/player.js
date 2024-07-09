@@ -10,6 +10,7 @@ class Player{
         this.speedY
         this.img = new Image()
         this.img.src = "./assets/players/Character 1/Character 1.png"
+        this.reqAnim
     }
     draw(){
         
@@ -27,8 +28,9 @@ class Player{
         if (this.isTouchingGround()){
             this.y = document.getElementById('WorldCollision').getBoundingClientRect().top - this.height
             //console.log('on the ground')
-            this.Surfing()
 
+            this.Surfing()
+            return
         }
     }
     resize(){
@@ -39,7 +41,7 @@ class Player{
         this.speedY = -2 * this.game.ratio
     }
     isTouchingGround(){
-        
+    
       return this.y >= document.getElementById('WorldCollision').getBoundingClientRect().top - this.height
     }
     isTouchingRoof(){
@@ -71,15 +73,16 @@ class Player{
        
         
           //loop through images and and change while player is on the floot
-          
-            for(let i = 0; i < SurfingImageArray.length; i++){
-                
-                this.img.src = SurfingImageArray[i]
-            }
-          
+          this.speedY = -1 * this.game.ratio
+           console.log('surfing')
+            this.img.src = SurfingImageArray[0]
         
+        return
          
         
-
+         
     }
 }
+
+
+
