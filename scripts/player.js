@@ -74,7 +74,7 @@ class Player{
         
           //loop through images and and change while player is on the floot
           this.speedY = -1 * this.game.ratio
-           console.log('surfing')
+           //console.log('surfing')
             this.img.src = SurfingImageArray[0]
         
         return
