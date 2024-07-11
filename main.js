@@ -205,6 +205,14 @@ window.addEventListener('load', function(){
 
     var img = new Image
     img.src = "./assets/background/World2.png"
+    var img2 = new Image
+    img2.src = "./assets/players/Character 1/animations/surfing/SurfingC11.png"
+    var img3 = new Image
+    img3.src = "./assets/players/Character 1/animations/down/Down C1.png"
+    var img4 = new Image
+    img4.src = "./assets/players/Character 1/animations/boost/Boost C1.png"
+    var img5 = new Image
+    img5.src = "./assets/players/Character 1/Character 1.png"
     function AnimateWorld(){
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         game.renderWorld()
