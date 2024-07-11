@@ -48,7 +48,7 @@ class Player{
         return this.y <= 0;
     }
     fly(){
-        console.log('fly')
+        
         if(!this.isTouchingRoof()){
             this.speedY = -3.5 * this.game.ratio
         }
