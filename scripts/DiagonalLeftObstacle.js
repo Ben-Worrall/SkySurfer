@@ -12,6 +12,11 @@ class DiagonalLeftObstacle{
        
         this.xCord += this.game.DiagonalLeftObspeed
         
+        
+          
+            //this.yCord -= this.game.DiagonalLeftObspeed
+        
+        
     }
     draw(){
         

@@ -17,23 +17,23 @@ class Game{
         this.DiagonalLeftObspeed
         //ground level obstacles
         this.GroundObstaclesAr = []
-        this.numberOfGroundObstacles = 10
+        this.numberOfGroundObstacles = 2000
         //this.CreateGroundObstacles()
 
         //top level objects
         this.TopObstaclesAr = []
-        this.numberOfTopObstacles = 10
+        this.numberOfTopObstacles = 2000
 
 
         //diagonal from right
         this.DiagonalRightObstaclesAr = []
-        this.numberOfDiagonalRightObstacles = 10
+        this.numberOfDiagonalRightObstacles = 2000
     
     
     
         //diagonal from left
         this.DiagonalLeftObstaclesAr = []
-        this.numberOfDiagonalLeftObstacles = 10
+        this.numberOfDiagonalLeftObstacles = 2000
 
 
 
@@ -73,10 +73,10 @@ class Game{
         this.world.resize()
         this.ctx.fillStyle = 'red'
         //console.log(this.ratio)
-        this.GroundObspeed = 2 * this.ratio
-        this.TopObspeed = 3 * this.ratio
-        this.DiagonalRightObspeed = 1.5 * this.ratio
-        this.DiagonalLeftObspeed = 2.5 * this.ratio
+        this.GroundObspeed = 2.5 * this.ratio
+        this.TopObspeed = 5 * this.ratio
+        this.DiagonalRightObspeed = 2 * this.ratio
+        this.DiagonalLeftObspeed = 3.5 * this.ratio
         //ground level objects
         this.createGroundObstacles();
         this.GroundObstaclesAr.forEach(obstacle => {
@@ -90,9 +90,11 @@ class Game{
             obstacle.resize()
         })
         //diagonal from right
-
-
-
+        this.createDiagonalRightObstacles();
+        this.DiagonalRightObstaclesAr.forEach(obstacle => {
+            
+            obstacle.resize()
+        })
         //diagonal from left
         this.createDiagonalLeftObstacles();
         this.DiagonalLeftObstaclesAr.forEach(obstacle => {
@@ -120,12 +122,12 @@ class Game{
             obstacle.draw()
             
         })
-
-
         //diagonal from right
-
-
-
+        this.DiagonalRightObstaclesAr.forEach(obstacle => {
+            obstacle.update()
+            obstacle.draw()
+            
+        })
         //diagonal from left
         this.DiagonalLeftObstaclesAr.forEach(obstacle => {
             obstacle.update()
@@ -148,9 +150,9 @@ class Game{
     //ground level objects
     createGroundObstacles(){
         this.GroundObstaclesAr = []
-        const firstX = 100
-        const obstacleSpacing = 750;
-        for(let i = 0; i < 10; i++){
+        const firstX = this.width
+        const obstacleSpacing = 1050 * this.ratio;
+        for(let i = 0; i < this.numberOfGroundObstacles; i++){
             
             this.GroundObstaclesAr.push(new GroundObstacle(this, (firstX + (i * obstacleSpacing))))
         }
@@ -158,22 +160,29 @@ class Game{
     //top level objects
     createTopObstacles(){
         this.TopObstaclesAr = []
-        const firstX = 50
-        const obstacleSpacing = 750;
-        for(let i = 0; i < 10; i++){
+        const firstX = 0
+        const obstacleSpacing = -1300 * this.ratio;
+        for(let i = 0; i < this.numberOfTopObstacles; i++){
             
             this.TopObstaclesAr.push(new TopObstacle(this, (firstX + (i * obstacleSpacing))))
         }
     }
     //diagonal from right
-
-    
+    createDiagonalRightObstacles(){
+        this.DiagonalRightObstaclesAr = []
+        const firstX = this.width/2
+        const obstacleSpacing = 950 * this.ratio;
+        for(let i = 0; i < this.numberOfDiagonalRightObstacles; i++){
+            
+            this.DiagonalRightObstaclesAr.push(new DiagonalRightObstacle(this, (firstX + (i * obstacleSpacing))))
+        }
+    }
     //diagonal from left
     createDiagonalLeftObstacles(){
         this.DiagonalLeftObstaclesAr = []
         const firstX = 0
-        const obstacleSpacing = -600;
-        for(let i = 0; i < 10; i++){
+        const obstacleSpacing = -800 * this.ratio;
+        for(let i = 0; i < this.numberOfDiagonalLeftObstacles; i++){
             
             this.DiagonalLeftObstaclesAr.push(new DiagonalLeftObstacle(this, (firstX + (i * obstacleSpacing))))
         }

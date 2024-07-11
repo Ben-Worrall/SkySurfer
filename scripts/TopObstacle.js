@@ -10,7 +10,7 @@ class TopObstacle{
     }
     update(){
        
-        this.xCord -= this.game.TopObspeed
+        this.xCord += this.game.TopObspeed
         
     }
     draw(){
