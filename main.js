@@ -45,7 +45,7 @@ class Game{
         this.resize(window.innerWidth, window.innerHeight)
          //check for resizing
         window.addEventListener('resize', e =>{
-            
+            location.reload()
             this.resize(e.currentTarget.innerWidth, e.currentTarget.innerHeight)
         })
 
@@ -61,7 +61,7 @@ class Game{
 
 
     resize(width, height){
-
+        
         this.canvas.width = width;
         this.canvas.height = height;
         this.height = this.canvas.height;
