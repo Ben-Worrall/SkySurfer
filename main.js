@@ -260,7 +260,14 @@ window.addEventListener('load', function(){
         e.target.style.height = "14vw"
         e.target.style.width = "14vw"
     })
-
+    //mouse leave
+    document.getElementById('UpButton').addEventListener("mouseleave", e => {
+        this.window.cancelAnimationFrame(reqAnim)
+        game.player.Down()
+        //change button back
+        e.target.style.height = "14vw"
+        e.target.style.width = "14vw"
+    });
 
     //for mobile controls
 
