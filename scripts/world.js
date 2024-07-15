@@ -54,7 +54,7 @@ class World{
         
     }
     update(){
-        this.angle = this.angle + (0.1 * this.game.ratio)
+        this.angle = this.angle + (-0.1 * this.game.ratio)
     }
     resize(){
         

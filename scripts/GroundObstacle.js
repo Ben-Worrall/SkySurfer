@@ -1,12 +1,12 @@
 class GroundObstacle{
     constructor(game, x){
         this.game = game;
-        this.spriteWidth = 120;
-        this.spriteHeight = 120;
+        this.spriteWidth = 70;
+        this.spriteHeight = 70;
         this.scaledWidth = this.spriteWidth * this.game.ratio;
         this.scaledHeight = this.spriteHeight * this.game.ratio;
         this.xCord = x;
-        this.yCord = (555 * this.game.ratio) + this.scaledHeight
+        this.yCord = (555 * this.game.ratio) + this.scaledHeight*2
     }
     update(){
        
