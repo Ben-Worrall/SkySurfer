@@ -11,14 +11,31 @@ class Player{
         this.img = new Image()
         this.img.src = "./assets/players/Character 1/Character 1.png"
         this.reqAnim
+
+        //collisions
+        this.collisionX;
+        this.collisionY;
+        this.collisionRadius;
     }
     draw(){
         
         //this.game.ctx.fillRect(this.x,this.y,this.width,this.height)
         this.game.ctx.drawImage(this.img,this.x,this.y,this.width,this.height);
+
+
+         //draw collision
+         this.game.ctx.beginPath();
+         this.game.ctx.arc(this.collisionX, this.collisionY, this.collisionRadius, 0, Math.PI * 2)
+         this.game.ctx.stroke() 
     }
     update(){
         this.y += this.speedY
+        //collision
+        this.collisionY = this.y + this.height * 0.5;
+        this.collisionX = this.x + this.width * 0.5;
+
+
+
         if(!this.isTouchingGround()){
             this.speedY += this.game.gravity
             //console.log('up in the air')
@@ -39,6 +56,10 @@ class Player{
         this.y = this.game.height * 0.5 - this.height * 0.5
         this.x = document.getElementById('WorldCollision').getBoundingClientRect().width/2 + this.width*1.85
         this.speedY = -2 * this.game.ratio
+
+
+        //collisins
+        this.collisionRadius = this.width * 0.5
     }
     isTouchingGround(){
     
