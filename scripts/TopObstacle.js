@@ -1,12 +1,12 @@
 class TopObstacle{
     constructor(game, x){
         this.game = game;
-        this.spriteWidth = 200;
-        this.spriteHeight = 200;
+        this.spriteWidth = 175;
+        this.spriteHeight = 175;
         this.scaledWidth = this.spriteWidth * this.game.ratio;
         this.scaledHeight = this.spriteHeight * this.game.ratio;
         this.xCord = x;
-        this.yCord = 0 + (this.scaledHeight)/2
+        this.yCord = 0 + (this.scaledHeight)/4
 
         //collisions
         this.collisionX;

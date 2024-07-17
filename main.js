@@ -77,9 +77,9 @@ class Game{
         this.ctx.fillStyle = 'red'
         //console.log(this.ratio)
         this.GroundObspeed = 2.5 * this.ratio
-        this.TopObspeed = 3.65 * this.ratio
+        this.TopObspeed = 4 * this.ratio
         
-        this.DiagonalLeftObspeed = 5 * this.ratio
+        this.DiagonalLeftObspeed = 6 * this.ratio
         //ground level objects
         this.createGroundObstacles();
         this.GroundObstaclesAr.forEach(obstacle => {
@@ -243,6 +243,14 @@ class Game{
 
 
 window.addEventListener('load', function(){
+
+    //set high score
+    if(this.localStorage.getItem('HighScore')){
+        this.document.getElementById('HighScore').innerHTML = "High Score: " + this.localStorage.getItem('HighScore')
+    }else{
+        this.document.getElementById('HighScore').innerHTML = "High Score: 0"
+    }
+    
     
     //console.log(document.getElementById('WorldCollision').getBoundingClientRect().left)
 
@@ -366,17 +374,60 @@ window.addEventListener('load', function(){
         document.getElementById('PlayerButton').style.display="none"
         game.Running = true
         game.start()
+
+
+        //score
+
+        document.getElementById('Score').innerHTML = "Score: 0"
+
+        var timer
+       let score = 0
+       function tick() {
+        score++
+        document.getElementById('Score').innerHTML = "Score: " + score
+        start();        // restart the timer
+    };
+
+    function start() {  // use a one-off timer
+        timer = setTimeout(tick, 1000);
+    };
+      
+    function stop() {
+
+        //set highscore to localstorage
+        if(!localStorage.getItem('HighScore'))
+        {
+            localStorage.setItem('HighScore', score)
+            document.getElementById('HighScore').innerHTML = "High Score: " + score
+        }
+        else if(localStorage.getItem('HighScore') < score)
+        {
+            localStorage.setItem('HighScore', score)
+            document.getElementById('HighScore').innerHTML = "High Score: " + score
+        }
+
+
+
+        clearTimeout(timer);
+    };
+    start()
+        
+
+
+
         
        //update all game objects
+
+
     function Animate(){
         if(game.Running == true){
             game.render()
         requestAnimationFrame(Animate)
-        console.log(game.Running)
+        
         }else{
             document.getElementById('PlayerButton').style.display=""
             game.Running = false
-            console.log(game.Running)
+            stop()
         }
         
         
