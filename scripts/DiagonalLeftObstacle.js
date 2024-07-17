@@ -12,6 +12,9 @@ class DiagonalLeftObstacle{
         this.collisionX;
         this.collisionY;
         this.collisionRadius = this.scaledWidth * 0.5;
+
+        this.img = new Image
+        this.img.src = "./assets/obstacles/MiddleLayer/asteroid 1.png"
     }
     update(){
        
@@ -36,7 +39,8 @@ class DiagonalLeftObstacle{
     }
     draw(){
         
-        this.game.ctx.fillRect(this.xCord, this.yCord, this.scaledWidth, this.scaledHeight)
+        this.game.ctx.drawImage(this.img,this.xCord, this.yCord, this.scaledWidth, this.scaledHeight)
+
 
         //draw collision
         this.game.ctx.beginPath();

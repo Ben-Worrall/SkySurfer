@@ -13,6 +13,10 @@ class GroundObstacle{
         this.collisionX;
         this.collisionY;
         this.collisionRadius = this.scaledWidth * 0.5;
+
+
+        this.img = new Image
+        this.img.src = "./assets/obstacles/BottomLayer/asteroid 1.png"
         
     }
     update(){
@@ -34,7 +38,7 @@ class GroundObstacle{
     }
     draw(){
         
-        this.game.ctx.fillRect(this.xCord, this.yCord, this.scaledWidth, this.scaledHeight)
+        this.game.ctx.drawImage(this.img,this.xCord, this.yCord, this.scaledWidth, this.scaledHeight)
 
 
         //draw collision
