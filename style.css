@@ -206,7 +206,7 @@
   width:  94.95vh;
   height:  94.95vh;
   z-index: 1113;
-  
+  outline: solid blue 1px;
   height: 22%;
   bottom:0;
   
