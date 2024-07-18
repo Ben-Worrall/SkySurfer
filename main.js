@@ -396,7 +396,11 @@ window.addEventListener('load', function(){
         //console.log('button push')
         e.target.style.height = "13vw"
         e.target.style.width = "13vw"
-       
+        function Animate(){
+            reqAnim = this.window.requestAnimationFrame(Animate)
+            game.player.fly()
+        }
+        Animate()
         
             
     })
@@ -405,7 +409,7 @@ window.addEventListener('load', function(){
     document.getElementById('UpButton').addEventListener('touchend', e =>{
         e.preventDefault()
         //console.log('button release')
-        
+        this.window.cancelAnimationFrame(reqAnim)
         game.player.Down()
         //change button back
         e.target.style.height = "14vw"
