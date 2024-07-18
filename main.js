@@ -68,7 +68,7 @@ class Game{
         this.world.resize()
         this.ctx.fillStyle = 'red'
         //console.log(this.ratio)
-        this.GroundObspeed = 2.5 * this.ratio
+        this.GroundObspeed = 3 * this.ratio
         this.TopObspeed = 4 * this.ratio
         this.DiagonalRightObspeed = 5 * this.ratio
         this.DiagonalLeftObspeed = 6 * this.ratio
