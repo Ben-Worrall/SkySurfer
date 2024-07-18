@@ -272,7 +272,7 @@ window.addEventListener('load', function(){
 
     
     document.addEventListener('contextmenu', event => event.preventDefault())
-
+   
     //set high score
     if(this.localStorage.getItem('HighScore')){
         this.document.getElementById('HighScore').innerHTML = "High Score: " + this.localStorage.getItem('HighScore')
@@ -315,7 +315,7 @@ window.addEventListener('load', function(){
     //for mouse contrls
     let reqAnim
 
-
+    this.document.getElementById('WorldCollision').style.height = (game.height * 0.22) + "px"
     document.getElementById('UpButton').addEventListener('mousedown', e =>{
         //console.log(e.target)
         //console.log('button push')
