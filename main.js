@@ -61,7 +61,7 @@ class Game{
         //collision
         this.ctx.lineWidth = 0.1
         this.ctx.strokeStyle = "rgba(1, 1, 1, 0)"
-        t//his.ctx.strokeStyle = "white"
+        //this.ctx.strokeStyle = "white"
 
         this.gravity = 0.15 * this.ratio
         this.player.resize()
@@ -306,8 +306,7 @@ class Game{
 
 window.addEventListener('load', function(){
 
-    console.log(this.document.getElementById('CenterLine').getBoundingClientRect().left)
-
+    
     document.addEventListener('contextmenu', event => event.preventDefault())
 
     //set high score

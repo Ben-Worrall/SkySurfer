@@ -22,13 +22,7 @@
     top: 0;
     left: 0;
 }
-#CenterLine{
-  width: 0.1%;
-  height: 100%;
-  position: absolute;
-  z-index: 1119;
-  outline: 1px blue solid;
-}
+
 
 
 .assets {
