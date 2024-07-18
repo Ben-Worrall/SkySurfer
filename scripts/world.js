@@ -31,7 +31,7 @@ class World{
         this.game.ctx.save()
     
         //Convert degrees to radian 
-        var rad = this.angle * Math.PI / 180;
+        var rad = (this.angle * Math.PI / 180);
     
         //Set the origin to the center of the image
         this.game.ctx.translate(x + width / 2, y + height / 2);
@@ -54,7 +54,7 @@ class World{
         
     }
     update(){
-        this.angle = this.angle + (-0.1 * this.game.ratio)
+        this.angle = this.angle + (-0.1)
     }
     resize(){
         
