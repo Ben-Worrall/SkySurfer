@@ -1,12 +1,12 @@
 class DiagonalLeftObstacle{
     constructor(game, x){
         this.game = game;
-        this.spriteWidth = 150;
-        this.spriteHeight = 150;
+        this.spriteWidth = 70;
+        this.spriteHeight = 70;
         this.scaledWidth = this.spriteWidth * this.game.ratio;
         this.scaledHeight = this.spriteHeight * this.game.ratio;
         this.xCord = x;
-        this.yCord = (this.game.height)/3
+        this.yCord = (this.game.height)/2
 
         //collisions
         this.collisionX;

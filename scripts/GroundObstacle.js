@@ -1,12 +1,12 @@
 class GroundObstacle{
     constructor(game, x){
         this.game = game;
-        this.spriteWidth = 150;
-        this.spriteHeight = 150;
+        this.spriteWidth = 60;
+        this.spriteHeight = 60;
         this.scaledWidth = this.spriteWidth * this.game.ratio;
         this.scaledHeight = this.spriteHeight * this.game.ratio;
         this.xCord = x;
-        this.yCord = this.game.height  - ( this.scaledHeight *3)
+        this.yCord = (this.game.height  - ( this.scaledHeight *5.5)) 
 
 
         //collisions

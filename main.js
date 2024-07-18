@@ -10,27 +10,19 @@ class Game{
         this.player = new Player(this)
         this.gravity
         this.baseHeight = 1080
-        this.ratio = this.height / this.baseHeight
+        this.baseWidth = 1920
+        this.ratio = (this.height + this.width) / (this.baseHeight + this.baseWidth)
         this.fly = false
         this.GroundObspeed
         this.TopObspeed
         this.DiagonalLeftObspeed
         //ground level obstacles
         this.GroundObstaclesAr = []
-        this.numberOfGroundObstacles = 2000
-        //this.CreateGroundObstacles()
-
         //top level objects
         this.TopObstaclesAr = []
-        this.numberOfTopObstacles = 2000
-
-
-    
-    
-    
         //diagonal from left
         this.DiagonalLeftObstaclesAr = []
-        this.numberOfDiagonalLeftObstacles = 2000
+        this.DiagonalRightObstaclesAr = []
 
 
 
@@ -78,7 +70,7 @@ class Game{
         //console.log(this.ratio)
         this.GroundObspeed = 2.5 * this.ratio
         this.TopObspeed = 4 * this.ratio
-        
+        this.DiagonalRightObspeed = 5 * this.ratio
         this.DiagonalLeftObspeed = 6 * this.ratio
         //ground level objects
         this.createGroundObstacles();
@@ -99,25 +91,21 @@ class Game{
             
             obstacle.resize()
         })
+        this.createDiagonalRightObstacles();
+        this.DiagonalRightObstaclesAr.forEach(obstacle => {
+            
+            obstacle.resize()
+        })
         
 
     }
     start(){
         this.GroundObstaclesAr = []
-        this.numberOfGroundObstacles = 2000
-        //this.CreateGroundObstacles()
-
         //top level objects
         this.TopObstaclesAr = []
-        this.numberOfTopObstacles = 2000
-
-
-    
-    
-    
         //diagonal from left
         this.DiagonalLeftObstaclesAr = []
-        this.numberOfDiagonalLeftObstacles = 2000
+       this.DiagonalRightObstaclesAr = []
 
 
 
@@ -141,6 +129,11 @@ class Game{
             
             obstacle.resize()
         })
+        this.createDiagonalRightObstacles();
+        this.DiagonalRightObstaclesAr.forEach(obstacle => {
+            
+            obstacle.resize()
+        })
     }
 
 
@@ -149,24 +142,79 @@ class Game{
         this.player.update()
         this.player.draw()
         //ground level objects
-        this.GroundObstaclesAr.forEach(obstacle => {
-            obstacle.update()
-            obstacle.draw()
+        for(let i = 0; i < this.GroundObstaclesAr.length; i++){
+            this.GroundObstaclesAr[i].update()
+            this.GroundObstaclesAr[i].draw()
+            if(Math.floor(this.GroundObstaclesAr[i].xCord) == 600){
+                
+                this.createGroundObstacles()
+            }
+            //removei tem when its off screen
+            if(this.GroundObstaclesAr[i].xCord <= 0){
+                
+                this.GroundObstaclesAr.splice(i,1)
+               
+            }
             
-        })
+        }
         //top level objects
-        this.TopObstaclesAr.forEach(obstacle => {
-            obstacle.update()
-            obstacle.draw()
+        for(let i = 0; i < this.TopObstaclesAr.length; i++){
+
+            this.TopObstaclesAr[i].update()
+            this.TopObstaclesAr[i].draw()
+            if(Math.floor(this.TopObstaclesAr[i].xCord) == 600){
+                
+                this.createTopObstacles()
+            }
+            if(this.TopObstaclesAr[i].xCord >= this.canvas.width){
+                //console.log(this.TopObstaclesAr.length, "top")
+                this.TopObstaclesAr.splice(i,1)
+               
+            }
             
-        })
+            
+        }
         
         //diagonal from left
-        this.DiagonalLeftObstaclesAr.forEach(obstacle => {
-            obstacle.update()
-            obstacle.draw()
+        for(let i = 0; i < this.DiagonalLeftObstaclesAr.length; i++){
+            this.DiagonalLeftObstaclesAr[i].update()
+            this.DiagonalLeftObstaclesAr[i].draw()
             
-        })
+            
+            if(Math.floor(this.DiagonalLeftObstaclesAr[i].xCord) == 598){
+                
+                this.createDiagonalLeftObstacles()
+            }
+            if(this.DiagonalLeftObstaclesAr[i].xCord >= this.canvas.width){
+                //console.log(this.DiagonalLeftObstaclesAr.length, "left middle")
+                this.DiagonalLeftObstaclesAr.splice(i,1)
+               
+            }
+
+            
+                
+            
+        }
+        //diagonal from right
+        for(let i = 0; i < this.DiagonalRightObstaclesAr.length; i++){
+            this.DiagonalRightObstaclesAr[i].update()
+            this.DiagonalRightObstaclesAr[i].draw()
+            
+            //console.log(Math.floor(this.DiagonalRightObstaclesAr[i].xCord))
+            if(Math.floor(this.DiagonalRightObstaclesAr[i].xCord) == 600){
+                
+                this.createDiagonalRightObstacles()
+            }
+            if(this.DiagonalRightObstaclesAr[i].xCord <= 0){
+                //console.log(this.DiagonalRightObstaclesAr.length, "left middle")
+                this.DiagonalRightObstaclesAr.splice(i,1)
+               
+            }
+
+            
+                
+            
+        }
         
        
     }
@@ -181,21 +229,23 @@ class Game{
         
     }
     //ground level objects
+    
     createGroundObstacles(){
-        this.GroundObstaclesAr = []
+        //this.GroundObstaclesAr = []
         const firstX = this.width - (600 * this.ratio)
         const obstacleSpacing = 800 * this.ratio;
-        for(let i = 0; i < this.numberOfGroundObstacles; i++){
+        for(let i = 0; i < 1; i++){
             
             this.GroundObstaclesAr.push(new GroundObstacle(this, (firstX + (i * obstacleSpacing))))
         }
     }
+    
     //top level objects
     createTopObstacles(){
-        this.TopObstaclesAr = []
+        //this.TopObstaclesAr = []
         const firstX = 0
         const obstacleSpacing = -1300 * this.ratio;
-        for(let i = 0; i < this.numberOfTopObstacles; i++){
+        for(let i = 0; i < 1; i++){
             
             this.TopObstaclesAr.push(new TopObstacle(this, (firstX + (i * obstacleSpacing))))
         }
@@ -203,16 +253,27 @@ class Game{
     
     //diagonal from left
     createDiagonalLeftObstacles(){
-        this.DiagonalLeftObstaclesAr = []
+        //this.DiagonalLeftObstaclesAr = []
         const firstX = 0
         var obstacleSpacing = -((1000) * this.ratio);
         
-        for(let i = 0; i < this.numberOfDiagonalLeftObstacles; i++){
+        for(let i = 0; i < 1; i++){
             
             this.DiagonalLeftObstaclesAr.push(new DiagonalLeftObstacle(this, (firstX + (i * obstacleSpacing))))
         }
     }
-
+ //diagonal from right
+ createDiagonalRightObstacles(){
+    //this.DiagonalLeftObstaclesAr = []
+    
+    const firstX = this.width - (600 * this.ratio)
+    const obstacleSpacing = 800 * this.ratio;
+    
+    for(let i = 0; i < 1; i++){
+        
+        this.DiagonalRightObstaclesAr.push(new DiagonalRightObstacle(this, (firstX + (i * obstacleSpacing))))
+    }
+}
 
 
     //check for collisions
@@ -374,6 +435,7 @@ window.addEventListener('load', function(){
         document.getElementById('PlayerButton').style.display="none"
         game.Running = true
         game.start()
+        
 
 
         //score
