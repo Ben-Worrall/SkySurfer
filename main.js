@@ -305,6 +305,8 @@ class Game{
 
 window.addEventListener('load', function(){
 
+    document.addEventListener('contextmenu', event => event.preventDefault())
+
     //set high score
     if(this.localStorage.getItem('HighScore')){
         this.document.getElementById('HighScore').innerHTML = "High Score: " + this.localStorage.getItem('HighScore')
