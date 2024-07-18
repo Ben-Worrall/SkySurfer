@@ -22,7 +22,13 @@
     top: 0;
     left: 0;
 }
-
+#CenterLine{
+  width: 0.1%;
+  height: 100%;
+  position: absolute;
+  z-index: 1119;
+  outline: 1px blue solid;
+}
 
 
 .assets {
@@ -238,6 +244,9 @@ background-size: 100% ;
   background-color: rgba(0, 0, 0,0);
   border: none;
   margin: 1%;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 

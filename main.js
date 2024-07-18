@@ -59,9 +59,9 @@ class Game{
       
 
         //collision
-        this.ctx.lineWidth = 0.1
-        this.ctx.strokeStyle = "rgba(1, 1, 1, 0)"
-
+        this.ctx.lineWidth = 1
+        //this.ctx.strokeStyle = "rgba(1, 1, 1, 0)"
+        this.ctx.strokeStyle = "white"
 
         this.gravity = 0.15 * this.ratio
         this.player.resize()
@@ -145,12 +145,13 @@ class Game{
         for(let i = 0; i < this.GroundObstaclesAr.length; i++){
             this.GroundObstaclesAr[i].update()
             this.GroundObstaclesAr[i].draw()
-            if(Math.floor(this.GroundObstaclesAr[i].xCord) == 600){
+            if(Math.floor(this.GroundObstaclesAr[i].xCord) <= this.width/2 + this.GroundObspeed && Math.floor(this.GroundObstaclesAr[i].xCord) >= this.width/2 ){
                 
                 this.createGroundObstacles()
+                return
             }
             //removei tem when its off screen
-            if(this.GroundObstaclesAr[i].xCord <= 0){
+            if(this.GroundObstaclesAr[i].xCord <= this.width/2 + this.GroundObspeed && Math.floor(this.GroundObstaclesAr[i].xCord) >= this.width/2 ){
                 
                 this.GroundObstaclesAr.splice(i,1)
                
@@ -162,7 +163,7 @@ class Game{
 
             this.TopObstaclesAr[i].update()
             this.TopObstaclesAr[i].draw()
-            if(Math.floor(this.TopObstaclesAr[i].xCord) == 600){
+            if(Math.floor(this.TopObstaclesAr[i].xCord) <= this.width/2 + this.TopObspeed && Math.floor(this.TopObstaclesAr[i].xCord) >= this.width/2 ){
                 
                 this.createTopObstacles()
             }
@@ -181,7 +182,7 @@ class Game{
             this.DiagonalLeftObstaclesAr[i].draw()
             
             
-            if(Math.floor(this.DiagonalLeftObstaclesAr[i].xCord) == 598){
+            if(this.DiagonalLeftObstaclesAr[i].xCord <= this.width/2 + this.DiagonalLeftObspeed && Math.floor(this.DiagonalLeftObstaclesAr[i].xCord) >= this.width/2 ){
                 
                 this.createDiagonalLeftObstacles()
             }
@@ -201,7 +202,7 @@ class Game{
             this.DiagonalRightObstaclesAr[i].draw()
             
             //console.log(Math.floor(this.DiagonalRightObstaclesAr[i].xCord))
-            if(Math.floor(this.DiagonalRightObstaclesAr[i].xCord) == 600){
+            if(Math.floor(this.DiagonalRightObstaclesAr[i].xCord) <= this.width/2 + this.DiagonalRightObspeed && Math.floor(this.DiagonalRightObstaclesAr[i].xCord) >= this.width/2){
                 
                 this.createDiagonalRightObstacles()
             }
@@ -232,11 +233,11 @@ class Game{
     
     createGroundObstacles(){
         //this.GroundObstaclesAr = []
-        const firstX = this.width - (600 * this.ratio)
-        const obstacleSpacing = 800 * this.ratio;
+        const firstX = this.width 
+        
         for(let i = 0; i < 1; i++){
             
-            this.GroundObstaclesAr.push(new GroundObstacle(this, (firstX + (i * obstacleSpacing))))
+            this.GroundObstaclesAr.push(new GroundObstacle(this, (firstX )))
         }
     }
     
@@ -244,10 +245,10 @@ class Game{
     createTopObstacles(){
         //this.TopObstaclesAr = []
         const firstX = 0
-        const obstacleSpacing = -1300 * this.ratio;
+        
         for(let i = 0; i < 1; i++){
             
-            this.TopObstaclesAr.push(new TopObstacle(this, (firstX + (i * obstacleSpacing))))
+            this.TopObstaclesAr.push(new TopObstacle(this, (firstX )))
         }
     }
     
@@ -255,23 +256,23 @@ class Game{
     createDiagonalLeftObstacles(){
         //this.DiagonalLeftObstaclesAr = []
         const firstX = 0
-        var obstacleSpacing = -((1000) * this.ratio);
+        
         
         for(let i = 0; i < 1; i++){
             
-            this.DiagonalLeftObstaclesAr.push(new DiagonalLeftObstacle(this, (firstX + (i * obstacleSpacing))))
+            this.DiagonalLeftObstaclesAr.push(new DiagonalLeftObstacle(this, (firstX )))
         }
     }
  //diagonal from right
  createDiagonalRightObstacles(){
     //this.DiagonalLeftObstaclesAr = []
     
-    const firstX = this.width - (600 * this.ratio)
-    const obstacleSpacing = 800 * this.ratio;
+    const firstX = this.width
+    
     
     for(let i = 0; i < 1; i++){
         
-        this.DiagonalRightObstaclesAr.push(new DiagonalRightObstacle(this, (firstX + (i * obstacleSpacing))))
+        this.DiagonalRightObstaclesAr.push(new DiagonalRightObstacle(this, (firstX )))
     }
 }
 
@@ -304,6 +305,8 @@ class Game{
 
 
 window.addEventListener('load', function(){
+
+    console.log(this.document.getElementById('CenterLine').getBoundingClientRect().left)
 
     document.addEventListener('contextmenu', event => event.preventDefault())
 
