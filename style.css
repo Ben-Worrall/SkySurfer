@@ -207,7 +207,8 @@
   height:  94.95vh;
   z-index: 1113;
   
-  bottom: -72.5%;
+  height: 22%;
+  bottom:0;
   
 }
 
@@ -237,7 +238,7 @@ background-size: 100% ;
   height: 14vw;
   background-color: rgba(0, 0, 0,0);
   border: none;
-  margin: 1%;
+  margin: 5%;
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
