@@ -314,8 +314,10 @@ window.addEventListener('load', function(){
 
     //for mouse contrls
     let reqAnim
-
+    
     this.document.getElementById('WorldCollision').style.height = (game.height * 0.22) + "px"
+    this.alert( this.document.getElementById('WorldCollision').style.height)
+    this.alert( game.height)
     document.getElementById('UpButton').addEventListener('mousedown', e =>{
         //console.log(e.target)
         //console.log('button push')
