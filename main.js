@@ -145,13 +145,13 @@ class Game{
         for(let i = 0; i < this.GroundObstaclesAr.length; i++){
             this.GroundObstaclesAr[i].update()
             this.GroundObstaclesAr[i].draw()
-            if(Math.floor(this.GroundObstaclesAr[i].xCord) <= this.width/2 + this.GroundObspeed && Math.floor(this.GroundObstaclesAr[i].xCord) >= this.width/2 ){
+            if(Math.floor(this.GroundObstaclesAr[i].xCord) <= (this.width/3)*2 + this.GroundObspeed && Math.floor(this.GroundObstaclesAr[i].xCord) >= (this.width/3)*2 ){
                 
                 this.createGroundObstacles()
                 return
             }
             //removei tem when its off screen
-            if(this.GroundObstaclesAr[i].xCord <= this.width/2 + this.GroundObspeed && Math.floor(this.GroundObstaclesAr[i].xCord) >= this.width/2 ){
+            if(this.GroundObstaclesAr[i].xCord <= 0 ){
                 
                 this.GroundObstaclesAr.splice(i,1)
                
@@ -163,7 +163,7 @@ class Game{
 
             this.TopObstaclesAr[i].update()
             this.TopObstaclesAr[i].draw()
-            if(Math.floor(this.TopObstaclesAr[i].xCord) <= this.width/2 + this.TopObspeed && Math.floor(this.TopObstaclesAr[i].xCord) >= this.width/2 ){
+            if(Math.floor(this.TopObstaclesAr[i].xCord) >= Math.floor(this.width/3) && Math.floor(this.TopObstaclesAr[i].xCord) <= Math.floor((this.width/3) + this.TopObspeed) ){
                 
                 this.createTopObstacles()
             }
@@ -182,7 +182,7 @@ class Game{
             this.DiagonalLeftObstaclesAr[i].draw()
             
             
-            if(this.DiagonalLeftObstaclesAr[i].xCord <= this.width/2 + this.DiagonalLeftObspeed && Math.floor(this.DiagonalLeftObstaclesAr[i].xCord) >= this.width/2 ){
+            if(Math.floor(this.DiagonalLeftObstaclesAr[i].xCord) >= Math.floor(this.width/3) && Math.floor(this.DiagonalLeftObstaclesAr[i].xCord) <= Math.floor((this.width/3) + this.DiagonalLeftObspeed) ){
                 
                 this.createDiagonalLeftObstacles()
             }
@@ -202,7 +202,7 @@ class Game{
             this.DiagonalRightObstaclesAr[i].draw()
             
             //console.log(Math.floor(this.DiagonalRightObstaclesAr[i].xCord))
-            if(Math.floor(this.DiagonalRightObstaclesAr[i].xCord) <= this.width/2 + this.DiagonalRightObspeed && Math.floor(this.DiagonalRightObstaclesAr[i].xCord) >= this.width/2){
+            if(Math.floor(this.DiagonalRightObstaclesAr[i].xCord) <= (this.width/3)*2 + this.DiagonalRightObspeed && Math.floor(this.DiagonalRightObstaclesAr[i].xCord) >= (this.width/3)*2){
                 
                 this.createDiagonalRightObstacles()
             }
