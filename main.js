@@ -59,9 +59,9 @@ class Game{
       
 
         //collision
-        this.ctx.lineWidth = 1
-        //this.ctx.strokeStyle = "rgba(1, 1, 1, 0)"
-        this.ctx.strokeStyle = "white"
+        this.ctx.lineWidth = 0.1
+        this.ctx.strokeStyle = "rgba(1, 1, 1, 0)"
+        t//his.ctx.strokeStyle = "white"
 
         this.gravity = 0.15 * this.ratio
         this.player.resize()
