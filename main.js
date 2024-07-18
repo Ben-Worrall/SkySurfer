@@ -72,30 +72,8 @@ class Game{
         this.TopObspeed = 4 * this.ratio
         this.DiagonalRightObspeed = 5 * this.ratio
         this.DiagonalLeftObspeed = 6 * this.ratio
-        //ground level objects
-        this.createGroundObstacles();
-        this.GroundObstaclesAr.forEach(obstacle => {
-            
-            obstacle.resize()
-        })
-        //top level objects
-        this.createTopObstacles();
-        this.TopObstaclesAr.forEach(obstacle => {
-            
-            obstacle.resize()
-        })
         
-        //diagonal from left
-        this.createDiagonalLeftObstacles();
-        this.DiagonalLeftObstaclesAr.forEach(obstacle => {
-            
-            obstacle.resize()
-        })
-        this.createDiagonalRightObstacles();
-        this.DiagonalRightObstaclesAr.forEach(obstacle => {
-            
-            obstacle.resize()
-        })
+        
         
 
     }
@@ -163,8 +141,8 @@ class Game{
 
             this.TopObstaclesAr[i].update()
             this.TopObstaclesAr[i].draw()
-            if(Math.floor(this.TopObstaclesAr[i].xCord) >= Math.floor(this.width/3) && Math.floor(this.TopObstaclesAr[i].xCord) <= Math.floor((this.width/3) + this.TopObspeed) ){
-                
+            if(Math.floor(this.TopObstaclesAr[i].xCord) >= (this.width/3) && Math.floor(this.TopObstaclesAr[i].xCord) <= ((this.width/3) + this.TopObspeed) ){
+               
                 this.createTopObstacles()
             }
             if(this.TopObstaclesAr[i].xCord >= this.canvas.width){
@@ -182,8 +160,8 @@ class Game{
             this.DiagonalLeftObstaclesAr[i].draw()
             
             
-            if(Math.floor(this.DiagonalLeftObstaclesAr[i].xCord) >= Math.floor(this.width/3) && Math.floor(this.DiagonalLeftObstaclesAr[i].xCord) <= Math.floor((this.width/3) + this.DiagonalLeftObspeed) ){
-                
+            if((this.DiagonalLeftObstaclesAr[i].xCord) >= (this.width/3) && (this.DiagonalLeftObstaclesAr[i].xCord) <= ((this.width/3) + this.DiagonalLeftObspeed) ){
+                console.log('left func')
                 this.createDiagonalLeftObstacles()
             }
             if(this.DiagonalLeftObstaclesAr[i].xCord >= this.canvas.width){
@@ -202,7 +180,7 @@ class Game{
             this.DiagonalRightObstaclesAr[i].draw()
             
             //console.log(Math.floor(this.DiagonalRightObstaclesAr[i].xCord))
-            if(Math.floor(this.DiagonalRightObstaclesAr[i].xCord) <= (this.width/3)*2 + this.DiagonalRightObspeed && Math.floor(this.DiagonalRightObstaclesAr[i].xCord) >= (this.width/3)*2){
+            if((this.DiagonalRightObstaclesAr[i].xCord) <= ((this.width/3)*2 + this.DiagonalRightObspeed) && (this.DiagonalRightObstaclesAr[i].xCord) >= (this.width/3)*2){
                 
                 this.createDiagonalRightObstacles()
             }
@@ -232,48 +210,34 @@ class Game{
     //ground level objects
     
     createGroundObstacles(){
-        //this.GroundObstaclesAr = []
-        const firstX = this.width 
         
-        for(let i = 0; i < 1; i++){
-            
-            this.GroundObstaclesAr.push(new GroundObstacle(this, (firstX )))
-        }
+        const firstX = this.width 
+        this.GroundObstaclesAr.push(new GroundObstacle(this, (firstX )))
+        
     }
     
     //top level objects
     createTopObstacles(){
-        //this.TopObstaclesAr = []
-        const firstX = 0
         
-        for(let i = 0; i < 1; i++){
-            
-            this.TopObstaclesAr.push(new TopObstacle(this, (firstX )))
-        }
+        const firstX = 0
+        this.TopObstaclesAr.push(new TopObstacle(this, (firstX )))
+        
     }
     
     //diagonal from left
     createDiagonalLeftObstacles(){
-        //this.DiagonalLeftObstaclesAr = []
+        
         const firstX = 0
+        this.DiagonalLeftObstaclesAr.push(new DiagonalLeftObstacle(this, (firstX )))
         
-        
-        for(let i = 0; i < 1; i++){
-            
-            this.DiagonalLeftObstaclesAr.push(new DiagonalLeftObstacle(this, (firstX )))
-        }
     }
  //diagonal from right
  createDiagonalRightObstacles(){
-    //this.DiagonalLeftObstaclesAr = []
+    
     
     const firstX = this.width
+    this.DiagonalRightObstaclesAr.push(new DiagonalRightObstacle(this, (firstX )))
     
-    
-    for(let i = 0; i < 1; i++){
-        
-        this.DiagonalRightObstaclesAr.push(new DiagonalRightObstacle(this, (firstX )))
-    }
 }
 
 
